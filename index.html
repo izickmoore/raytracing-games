@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steam Games with Ray Tracing</title>
+    <title>Ray Tracing Enabled Steam Games</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
 </head>
@@ -32,90 +32,58 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 IzickMoore. All rights reserved.</p>
+        <p>&copy; 2025 RayTracingGames. All rights reserved.</p>
     </footer>
 
     <script>
-        // Steam API key (replace with your own key)
-        const STEAM_API_KEY = "YOUR_STEAM_API_KEY";
-
         // Expanded list of ray tracing enabled games
         const rayTracingGamesList = [
-            "Cyberpunk 2077",
-            "Control",
-            "Minecraft",
-            "Battlefield V",
-            "Shadow of the Tomb Raider",
-            "Quake II RTX",
-            "Metro Exodus",
-            "Doom Eternal",
-            "Fortnite",
-            "CyberConnect X",
-            "F1 2021",
-            "Portal RTX",
-            "Call of Duty: Modern Warfare II",
-            "Cyberpunk 2077: Phantom Liberty",
-            "Far Cry 6",
-            "Watch Dogs: Legion",
-            "Wolfenstein: Youngblood",
-            "Crysis Remastered Trilogy",
-            "Resident Evil Village",
-            "Hitman 3",
-            "Forza Horizon 5",
-            "Enlisted",
-            "Bright Memory: Infinite",
-            "Atomic Heart",
-            "The Ascent",
-            "Deliver Us the Moon",
-            "Everspace 2",
-            "Ghostrunner",
-            "Stay in the Light",
-            "Vampire: The Masquerade - Bloodlines 2",
-            "Justice",
-            "The Medium",
-            "RTX Remix",
-            "CyberConnect X",
-            "Loopmancer",
-            "Project X",
-            "Witchfire",
-            "Chernobylite",
-            "Lego Builder's Journey",
-            "MechWarrior 5: Mercenaries",
-            "Severed Steel",
-            "Teardown",
-            "Total War Saga: Troy",
-            "World of Warcraft: Shadowlands",
-            "Assetto Corsa Competizione",
-            "Final Fantasy XV",
-            "No Man's Sky",
-            "Kingdom Come: Deliverance",
-            "Star Wars Jedi: Survivor",
-            "Beyond Good and Evil 2",
-            "The Division 2",
-            "Arma Reforger",
-            "Flight Simulator 2020",
-            "Call of Duty: Black Ops Cold War",
-            "Gotham Knights",
-            "Elden Ring",
-            "Hellblade: Senua's Sacrifice",
-            "Dying Light 2 Stay Human",
-            "Hogwarts Legacy",
-            "Dead Space Remake",
-            "The Witcher 3: Wild Hunt (Next-Gen Update)",
-            "The Callisto Protocol",
-            "Plague Tale: Requiem",
-            "Alan Wake 2",
-            "Lords of the Fallen",
-            "Starfield",
-            "Returnal",
-            "Ratchet & Clank: Rift Apart",
-            "Scorn",
-            "Amnesia: The Bunker",
-            "Aliens: Dark Descent",
-            "Stalker 2: Heart of Chernobyl",
-            "Frostpunk 2",
-            "Company of Heroes 3",
-            "Baldur's Gate 3"
+            "Cyberpunk 2077", "Control", "Minecraft", "Battlefield V", "Shadow of the Tomb Raider",
+            "Quake II RTX", "Metro Exodus", "Doom Eternal", "Fortnite", "CyberConnect X",
+            "F1 2021", "Portal RTX", "Call of Duty: Modern Warfare II", "Cyberpunk 2077: Phantom Liberty",
+            "Far Cry 6", "Watch Dogs: Legion", "Wolfenstein: Youngblood", "Crysis Remastered Trilogy",
+            "Resident Evil Village", "Hitman 3", "Forza Horizon 5", "Bright Memory Infinite",
+            "The Medium", "Enlisted", "Chivalry 2", "Deliver Us The Moon", "Ghostrunner",
+            "Justice Online", "Everspace 2", "Teardown", "Atomic Heart", "Dying Light 2",
+            "Vampire: The Masquerade – Bloodlines 2", "Project X", "Unreal Engine 5 Showcase",
+            "LEGO Builder’s Journey", "Witchfire", "Remnant 2", "ARK 2", "The Ascent",
+            "MechWarrior 5: Mercenaries", "Synced", "RTX Remix Showcase", "Alone in the Dark",
+            "Witcher 3: Wild Hunt (Next-Gen)", "Frostpunk 2", "Scorn", "Hellblade II: Senua’s Saga",
+            "STALKER 2: Heart of Chernobyl", "The Invincible", "Loopmancer", "Midnight Ghost Hunt",
+            "WRC Generations", "Chernobylite", "Ghostbusters: Spirits Unleashed", "Phantom Abyss",
+            "Boundary", "Pioner", "Pine", "Satisfactory", "Stormworks: Build and Rescue",
+            "Train Sim World 3", "Fishing Planet", "Planet Zoo", "Cities: Skylines II",
+            "Baldur’s Gate 3", "Total War: Warhammer III", "Company of Heroes 3", "Anno 1800",
+            "Dota 2", "Counter-Strike 2", "Half-Life: Alyx", "Rust", "ARK: Survival Evolved",
+            "Valheim", "No Man’s Sky", "Subnautica: Below Zero", "Green Hell", "The Forest",
+            "Sons of the Forest", "Grounded", "Raft", "Stray", "Hollow Knight: Silksong",
+            "Ori and the Will of the Wisps", "Cuphead", "Celeste", "Undertale", "Hades",
+            "Dead Cells", "Hollow Knight", "Blasphemous", "Katana ZERO", "Risk of Rain 2",
+            "Darkest Dungeon II", "Slay the Spire", "Monster Hunter: World", "Monster Hunter Rise",
+            "Elden Ring", "Dark Souls III", "Sekiro: Shadows Die Twice", "Bloodborne PC (Rumored)",
+            "Starfield", "Red Dead Redemption 2", "Grand Theft Auto V", "The Elder Scrolls V: Skyrim",
+            "Fallout 4", "Fallout 76", "Mass Effect Legendary Edition", "Dragon Age: Inquisition",
+            "The Outer Worlds", "The Outer Worlds 2", "CyberConnect Z", "Fable (Upcoming)",
+            "The Division 2", "Tom Clancy’s Rainbow Six Siege", "Tom Clancy’s Ghost Recon Breakpoint",
+            "Assassin’s Creed Valhalla", "Assassin’s Creed Mirage", "Assassin’s Creed Odyssey",
+            "Assassin’s Creed Origins", "Far Cry 5", "Far Cry Primal", "Far Cry New Dawn",
+            "Far Cry 4", "Far Cry 3", "Splinter Cell Remake", "Prince of Persia: Sands of Time Remake",
+            "Immortals Fenyx Rising", "Riders Republic", "The Crew 2", "Need for Speed: Heat",
+            "Need for Speed Unbound", "Grid Legends", "F1 2022", "Project CARS 3", "Dirt 5",
+            "WRC 10", "WRC 9", "SnowRunner", "MudRunner", "American Truck Simulator",
+            "Euro Truck Simulator 2", "BeamNG.drive", "Kerbal Space Program 2", "Space Engineers",
+            "Elite Dangerous", "Star Citizen", "EVE Online", "X4: Foundations", "Surviving Mars",
+            "Mars Horizon", "Terraformers", "The Sims 4", "The Sims 5 (Upcoming)", "Cities: Skylines",
+            "Tropico 6", "Frostpunk", "Banished", "Anno 2205", "Planet Coaster", "Jurassic World Evolution 2",
+            "Zoo Tycoon", "RollerCoaster Tycoon 3", "RollerCoaster Tycoon 2", "Parkitect",
+            "Surviving the Aftermath", "Warframe", "Destiny 2", "Anthem", "Outriders",
+            "Marvel’s Avengers", "Spider-Man Remastered", "Spider-Man: Miles Morales",
+            "Batman: Arkham Knight", "Gotham Knights", "Suicide Squad: Kill the Justice League",
+            "Star Wars Jedi: Fallen Order", "Star Wars Jedi: Survivor", "LEGO Star Wars: The Skywalker Saga",
+            "The Mandalorian Game (Rumored)", "Halo Infinite", "Halo: The Master Chief Collection",
+            "Gears 5", "Gears of War 4", "Quantum Break", "Alan Wake Remastered",
+            "Alan Wake II", "Control: Ultimate Edition", "Death Stranding", "Death Stranding: Director’s Cut",
+            "The Last of Us Part I", "The Last of Us Part II (Rumored)", "Uncharted: Legacy of Thieves Collection"
         ];
 
         // Populate the full list of ray tracing games on page load
@@ -148,45 +116,6 @@
 
             searchResults.innerHTML = "<h3>Search Results:</h3>";
             searchResults.appendChild(list);
-        });
-
-        // Event listener for connecting Steam library
-        document.getElementById("connect-steam").addEventListener("click", async () => {
-            const steamId = prompt("Enter your Steam ID to connect:");
-            if (steamId) {
-                try {
-                    const response = await fetch(
-                        `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=${STEAM_API_KEY}&steamid=${steamId}&include_appinfo=true`
-                    );
-                    const data = await response.json();
-                    if (data.response && data.response.games) {
-                        const userGames = data.response.games.map(game => game.name);
-                        const ownedRayTracingGames = userGames.filter(game =>
-                            rayTracingGamesList.includes(game)
-                        );
-
-                        const libraryResults = document.getElementById("library-results");
-                        libraryResults.innerHTML = "<h3>Your Ray Tracing Enabled Games:</h3>";
-
-                        if (ownedRayTracingGames.length > 0) {
-                            const list = document.createElement("ul");
-                            ownedRayTracingGames.forEach(game => {
-                                const listItem = document.createElement("li");
-                                listItem.textContent = game;
-                                list.appendChild(listItem);
-                            });
-                            libraryResults.appendChild(list);
-                        } else {
-                            libraryResults.innerHTML += "<p>No ray tracing enabled games found in your library.</p>";
-                        }
-                    } else {
-                        alert("Could not retrieve your Steam library. Please check your Steam ID and try again.");
-                    }
-                } catch (error) {
-                    console.error("Error fetching Steam library:", error);
-                    alert("An error occurred while connecting to your Steam library.");
-                }
-            }
         });
     </script>
 </body>
