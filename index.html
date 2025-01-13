@@ -6,6 +6,48 @@
     <title>Ray Tracing Enabled Steam Games</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 5px 0;
+        }
+
+        li:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        li:nth-child(even) {
+            background-color: #e9e9e9;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,8 +60,8 @@
             <h2>Search Games</h2>
             <input type="text" id="game-search" placeholder="Enter game name...">
             <div id="search-results">
-                <h3>All Ray Tracing Compatible Games:</h3>
-                <ul id="full-game-list"></ul>
+                <h3>Search Results:</h3>
+                <ul id="filtered-game-list"></ul>
             </div>
         </section>
 
@@ -69,53 +111,30 @@
             "Assassin’s Creed Origins", "Far Cry 5", "Far Cry Primal", "Far Cry New Dawn",
             "Far Cry 4", "Far Cry 3", "Splinter Cell Remake", "Prince of Persia: Sands of Time Remake",
             "Immortals Fenyx Rising", "Riders Republic", "The Crew 2", "Need for Speed: Heat",
-            "Need for Speed Unbound", "Grid Legends", "F1 2022", "Project CARS 3", "Dirt 5",
-            "WRC 10", "WRC 9", "SnowRunner", "MudRunner", "American Truck Simulator",
-            "Euro Truck Simulator 2", "BeamNG.drive", "Kerbal Space Program 2", "Space Engineers",
-            "Elite Dangerous", "Star Citizen", "EVE Online", "X4: Foundations", "Surviving Mars",
-            "Mars Horizon", "Terraformers", "The Sims 4", "The Sims 5 (Upcoming)", "Cities: Skylines",
-            "Tropico 6", "Frostpunk", "Banished", "Anno 2205", "Planet Coaster", "Jurassic World Evolution 2",
-            "Zoo Tycoon", "RollerCoaster Tycoon 3", "RollerCoaster Tycoon 2", "Parkitect",
-            "Surviving the Aftermath", "Warframe", "Destiny 2", "Anthem", "Outriders",
-            "Marvel’s Avengers", "Spider-Man Remastered", "Spider-Man: Miles Morales",
-            "Batman: Arkham Knight", "Gotham Knights", "Suicide Squad: Kill the Justice League",
-            "Star Wars Jedi: Fallen Order", "Star Wars Jedi: Survivor", "LEGO Star Wars: The Skywalker Saga",
-            "The Mandalorian Game (Rumored)", "Halo Infinite", "Halo: The Master Chief Collection",
-            "Gears 5", "Gears of War 4", "Quantum Break", "Alan Wake Remastered",
-            "Alan Wake II", "Control: Ultimate Edition", "Death Stranding", "Death Stranding: Director’s Cut",
-            "The Last of Us Part I", "The Last of Us Part II (Rumored)", "Uncharted: Legacy of Thieves Collection"
+            "Need for Speed Unbound", "Grid Legends", "F1 2022", "Project CARS 3", "Dirt 5"
         ];
 
-        // Populate the full list of ray tracing games on page load
-        const fullGameList = document.getElementById("full-game-list");
-        rayTracingGamesList.forEach(game => {
-            const listItem = document.createElement("li");
-            listItem.textContent = game;
-            fullGameList.appendChild(listItem);
-        });
-
-        // Event listener for live search
+        // Live search functionality
         document.getElementById("game-search").addEventListener("input", () => {
             const searchQuery = document.getElementById("game-search").value.toLowerCase();
-            const searchResults = document.getElementById("search-results");
+            const searchResults = document.getElementById("filtered-game-list");
+            searchResults.innerHTML = "";
 
-            const filteredGames = rayTracingGamesList.filter(game => game.toLowerCase().includes(searchQuery));
-            const list = document.createElement("ul");
+            const filteredGames = rayTracingGamesList.filter(game =>
+                game.toLowerCase().includes(searchQuery)
+            );
 
             if (filteredGames.length > 0) {
                 filteredGames.forEach(game => {
                     const listItem = document.createElement("li");
                     listItem.textContent = game;
-                    list.appendChild(listItem);
+                    searchResults.appendChild(listItem);
                 });
             } else {
                 const listItem = document.createElement("li");
-                listItem.textContent = "Not Raytracing Compatible";
-                list.appendChild(listItem);
+                listItem.textContent = "No Ray Tracing Compatible Games Found";
+                searchResults.appendChild(listItem);
             }
-
-            searchResults.innerHTML = "<h3>Search Results:</h3>";
-            searchResults.appendChild(list);
         });
     </script>
 </body>
